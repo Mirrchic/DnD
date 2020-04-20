@@ -37,7 +37,7 @@ type List struct {
 func main() {
 	//Init of bot
 	var err error
-	bot, err := tgbotapi.NewBotAPI("1047071352:AAG_C5IxQip5ZZmBrG3LjTKDQAsZTLyLXAk")
+	bot, err := tgbotapi.NewBotAPI("1070281604:AAGBJn6VtB8dSqo_--9HKZHWBon2ra0kzFc")
 	if err != nil {
 		log.Panic("bot init error:", err)
 		return
@@ -51,103 +51,45 @@ func main() {
 	if err != nil {
 		log.Panic("update error:", err)
 	}
-	//creating  buttons  body
+
+	MainResult := MainScan()
+	HumanButtons := MonsterScan(0)
+	GoblinidButtons := MonsterScan(1)
+	BeastButtons := MonsterScan(2)
+	DragonButtons := MonsterScan(3)
+	UndeadButtons := MonsterScan(4)
+	ConstructButtons := MonsterScan(5)
+
 	var Menu1 = tgbotapi.NewReplyKeyboard(
+		MainResult[:3],
+		MainResult[3:6],
 		tgbotapi.NewKeyboardButtonRow(
-			tgbotapi.NewKeyboardButton("Humanid"),
-			tgbotapi.NewKeyboardButton("Goblinid"),
-			tgbotapi.NewKeyboardButton("Beasts"),
-		),
-		tgbotapi.NewKeyboardButtonRow(
-			tgbotapi.NewKeyboardButton("Dragons"),
-			tgbotapi.NewKeyboardButton("Plant"),
-			tgbotapi.NewKeyboardButton("Construct"),
-		),
-		tgbotapi.NewKeyboardButtonRow(
-			tgbotapi.NewKeyboardButton("About bot"),
-			tgbotapi.NewKeyboardButton("Next page (2)"),
+			tgbotapi.NewKeyboardButton("Help"),
+			tgbotapi.NewKeyboardButton("About"),
 		),
 	)
-
-	var Menu2 = tgbotapi.NewReplyKeyboard(
-		tgbotapi.NewKeyboardButtonRow(
-			tgbotapi.NewKeyboardButton("Dragons"),
-			tgbotapi.NewKeyboardButton("Jin's"),
-			tgbotapi.NewKeyboardButton("somethink"),
-		),
-		tgbotapi.NewKeyboardButtonRow(
-			tgbotapi.NewKeyboardButton("Previos page (1)"),
-			tgbotapi.NewKeyboardButton("Next page(1)"),
-		),
-	)
-
-	var MenuHuman = tgbotapi.NewReplyKeyboard(
-		tgbotapi.NewKeyboardButtonRow(
-			tgbotapi.NewKeyboardButton("Elphs"),
-			tgbotapi.NewKeyboardButton("Dwarfs"),
-			tgbotapi.NewKeyboardButton("Gnom's"),
-		),
-		tgbotapi.NewKeyboardButtonRow(
-			tgbotapi.NewKeyboardButton("Humans"),
-			tgbotapi.NewKeyboardButton("Half-Orks"),
-		),
-		tgbotapi.NewKeyboardButtonRow(
-			tgbotapi.NewKeyboardButton("Main menu"),
-			tgbotapi.NewKeyboardButton("Move to Goblinid"),
-		),
+	//Init keuboards for different types of monsters
+	var MenuHumanoid = tgbotapi.NewReplyKeyboard(
+		HumanButtons...,
 	)
 
 	var MenuGoblinid = tgbotapi.NewReplyKeyboard(
-		tgbotapi.NewKeyboardButtonRow(
-			tgbotapi.NewKeyboardButton("Ogrs"),
-			tgbotapi.NewKeyboardButton("Orks"),
-			tgbotapi.NewKeyboardButton("Goblin's"),
-		),
-		tgbotapi.NewKeyboardButtonRow(
-			tgbotapi.NewKeyboardButton("Main menu"),
-			tgbotapi.NewKeyboardButton("Beasts"),
-		),
+		GoblinidButtons...,
 	)
 
-	var MenuBeast = tgbotapi.NewReplyKeyboard(
-		tgbotapi.NewKeyboardButtonRow(
-			tgbotapi.NewKeyboardButton("Fire elemental"),
-			tgbotapi.NewKeyboardButton("Ice elemental"),
-			tgbotapi.NewKeyboardButton("Eath elemental"),
-		),
-		tgbotapi.NewKeyboardButtonRow(
-			tgbotapi.NewKeyboardButton("Main menu"),
-			tgbotapi.NewKeyboardButton("Dragons"),
-		),
+	var MenuBeasts = tgbotapi.NewReplyKeyboard(
+		BeastButtons...,
 	)
-
-	var MenuPlants = tgbotapi.NewReplyKeyboard(
-		tgbotapi.NewKeyboardButtonRow(
-			tgbotapi.NewKeyboardButton("Dragons"),
-			tgbotapi.NewKeyboardButton("Jin's"),
-			tgbotapi.NewKeyboardButton("somethink"),
-		),
-		tgbotapi.NewKeyboardButtonRow(
-			tgbotapi.NewKeyboardButton("Main menu"),
-			tgbotapi.NewKeyboardButton("Next page(1)"),
-		),
-	)
-
 	var MenuDragons = tgbotapi.NewReplyKeyboard(
-		tgbotapi.NewKeyboardButtonRow(
-			tgbotapi.NewKeyboardButton("Metall"),
-			tgbotapi.NewKeyboardButton("Collor"),
-			tgbotapi.NewKeyboardButton("Legend"),
-		),
-		tgbotapi.NewKeyboardButtonRow(
-			tgbotapi.NewKeyboardButton("Main menu"),
-		),
+		DragonButtons...,
 	)
-	//readiing json file
-	Lists := List{}
-	readJson, _ := ioutil.ReadFile("monsters.json")
-	//returning jsons data to Jists struct
-	_ = json.Unmarshal(readJson, &Lists)
+	var MenuUndead = tgbotapi.NewReplyKeyboard(
+		UndeadButtons...,
+	)
+	var MenuConstruct = tgbotapi.NewReplyKeyboard(
+		ConstructButtons...,
+	)
+
 	//loop thats handle all updates thats bot taking
 	for update := range updates {
 
@@ -158,10 +100,10 @@ func main() {
 			msg.ReplyMarkup = Menu1
 			bot.Send(msg)
 		}
-		//humanid button
+
 		if update.Message.Text == Menu1.Keyboard[0][0].Text {
 			msg := tgbotapi.NewMessage(update.Message.Chat.ID, "Humanoids are the main peoples of a fantasy gaming world, both civilized and savage, including humans and a tremendous variety of other species. They have language and culture, few if any innate magical abilities (though most humanoids can learn spellcasting), and a bipedal form. The most common humanoid races are the ones most suitable as player characters: humans, dwarves, elves, and halflings.")
-			msg.ReplyMarkup = MenuHuman
+			msg.ReplyMarkup = MenuHumanoid
 			bot.Send(msg)
 		}
 		//goblinid button
@@ -170,9 +112,17 @@ func main() {
 			msg.ReplyMarkup = MenuGoblinid
 			bot.Send(msg)
 		}
+
+		if update.Message.Text == "Main Menu" {
+			msg := tgbotapi.NewMessage(update.Message.Chat.ID, "Welcome to main menu")
+			msg.ReplyMarkup = Menu1
+			bot.Send(msg)
+			log.Print("works")
+		}
 		//Beests button
 		if update.Message.Text == Menu1.Keyboard[0][2].Text {
 			msg := tgbotapi.NewMessage(update.Message.Chat.ID, "Beasts are nonhumanoid creatures that are a natural part of the fantasy ecology. Some of them have magical powers, but most are unintelligent and lack any society or language. Beasts include all varieties of ordinary animals, dinosaurs, and giant versions of animals.")
+			msg.ReplyMarkup = MenuBeasts
 			bot.Send(msg)
 		}
 		//Dragon button
@@ -184,140 +134,82 @@ func main() {
 		//Plant button
 		if update.Message.Text == Menu1.Keyboard[1][1].Text {
 			msg := tgbotapi.NewMessage(update.Message.Chat.ID, "Not ready yet")
+			msg.ReplyMarkup = MenuUndead
+			bot.Send(msg)
+		}
+		//Construct button
+		if update.Message.Text == Menu1.Keyboard[1][2].Text {
+			msg := tgbotapi.NewMessage(update.Message.Chat.ID, "Not ready yet")
+			msg.ReplyMarkup = MenuConstruct
 			bot.Send(msg)
 		}
 
-		//About botton
+		//About button
 		if update.Message.Text == Menu1.Keyboard[2][0].Text {
-			msg := tgbotapi.NewMessage(update.Message.Chat.ID, "This is very first version of pocket DnD bestiary")
+			msg := tgbotapi.NewMessage(update.Message.Chat.ID, "You can use buttons to navigate, or just write the monsters name")
 			bot.Send(msg)
 		}
-		//Next Page burron
+		//Help button
 		if update.Message.Text == Menu1.Keyboard[2][1].Text {
-			msg := tgbotapi.NewMessage(update.Message.Chat.ID, "Page 2:")
-			msg.ReplyMarkup = Menu2
-			bot.Send(msg)
-		}
-		//for second menu
-		if update.Message.Text == Menu2.Keyboard[0][0].Text {
-			msg := tgbotapi.NewMessage(update.Message.Chat.ID, "Yes it is just buttons")
-			bot.Send(msg)
-		}
-		//
-		if update.Message.Text == Menu2.Keyboard[0][1].Text {
-			msg := tgbotapi.NewMessage(update.Message.Chat.ID, "Yes it is just buttons")
-			bot.Send(msg)
-		}
-		//
-		if update.Message.Text == Menu2.Keyboard[0][2].Text {
-			msg := tgbotapi.NewMessage(update.Message.Chat.ID, "Yes it is just buttons")
-			bot.Send(msg)
-		}
-		//
-		if update.Message.Text == Menu2.Keyboard[1][0].Text {
-			msg := tgbotapi.NewMessage(update.Message.Chat.ID, "Yes it is just buttons")
+			msg := tgbotapi.NewMessage(update.Message.Chat.ID, "The bot is written to facilitate the search for monsters in the bestiary during the game.")
 			bot.Send(msg)
 		}
 
-		if update.Message.Text == Menu2.Keyboard[1][1].Text {
-			msg := tgbotapi.NewMessage(update.Message.Chat.ID, "Yes it is just buttons")
-			bot.Send(msg)
-		}
-
-		//varibals for answer on buttons that moves us to another monsters types or main menu
-		var mainAnswer = "we hope it helped you"
-		var nextType = "Previous creatior type was:"
-		//Login for Humanid Menu
-		if update.Message.Text == MenuHuman.Keyboard[0][0].Text {
-			msg := tgbotapi.NewMessage(update.Message.Chat.ID, "Yes it is just buttons")
-			msg.Text = "Name: " + Lists.ListOfMon[0].MonstersInfo[0].Name + "\n\n Character:  " + Lists.ListOfMon[0].MonstersInfo[0].Char + "\n\n Size:  " + Lists.ListOfMon[0].MonstersInfo[0].Skills + "\n\n Speed: " + Lists.ListOfMon[0].MonstersInfo[0].Speed + "\n\n\n" + Lists.ListOfMon[0].MonstersInfo[0].Desc
-			bot.Send(msg)
-		}
-		if update.Message.Text == MenuHuman.Keyboard[0][1].Text {
-			msg := tgbotapi.NewMessage(update.Message.Chat.ID, "Yes it is just buttons")
-			msg.Text = "Name: " + Lists.ListOfMon[0].MonstersInfo[1].Name + "\n\n Character:  " + Lists.ListOfMon[0].MonstersInfo[0].Char + "\n\n Size:  " + Lists.ListOfMon[0].MonstersInfo[0].Skills + "\n\n Speed: " + Lists.ListOfMon[0].MonstersInfo[1].Speed + "\n\n\n" + Lists.ListOfMon[0].MonstersInfo[1].Desc
-			bot.Send(msg)
-		}
-		if update.Message.Text == MenuHuman.Keyboard[0][2].Text {
-			msg := tgbotapi.NewMessage(update.Message.Chat.ID, "Yes it is just buttons")
-			msg.Text = "Name: " + Lists.ListOfMon[0].MonstersInfo[2].Name + "\n\n Character:  " + Lists.ListOfMon[0].MonstersInfo[2].Char + "\n\n Size:  " + Lists.ListOfMon[0].MonstersInfo[2].Skills + "\n\n Speed: " + Lists.ListOfMon[0].MonstersInfo[2].Speed + "\n\n\n" + Lists.ListOfMon[0].MonstersInfo[2].Desc
-			bot.Send(msg)
-		}
-		if update.Message.Text == MenuHuman.Keyboard[1][0].Text {
-			msg := tgbotapi.NewMessage(update.Message.Chat.ID, "Yes it is just buttons")
-			msg.Text = "Name: " + Lists.ListOfMon[0].MonstersInfo[3].Name + "\n\n Character:  " + Lists.ListOfMon[0].MonstersInfo[3].Char + "\n\n Size:  " + Lists.ListOfMon[0].MonstersInfo[3].Skills + "\n\n Speed: " + Lists.ListOfMon[0].MonstersInfo[3].Speed + "\n\n\n" + Lists.ListOfMon[0].MonstersInfo[3].Desc
-			bot.Send(msg)
-		}
-		if update.Message.Text == MenuHuman.Keyboard[1][1].Text {
-			msg := tgbotapi.NewMessage(update.Message.Chat.ID, "Yes it is just buttons")
-			msg.Text = "Name: " + Lists.ListOfMon[0].MonstersInfo[4].Name + "\n\n Character:  " + Lists.ListOfMon[0].MonstersInfo[4].Char + "\n\n Size:  " + Lists.ListOfMon[0].MonstersInfo[4].Skills + "\n\n Speed: " + Lists.ListOfMon[0].MonstersInfo[4].Speed + "\n\n\n" + Lists.ListOfMon[0].MonstersInfo[4].Desc
-			bot.Send(msg)
-		}
-
-		if update.Message.Text == MenuHuman.Keyboard[2][0].Text {
-			msg := tgbotapi.NewMessage(update.Message.Chat.ID, mainAnswer)
-			msg.ReplyMarkup = Menu1
-			bot.Send(msg)
-		}
-		if update.Message.Text == MenuHuman.Keyboard[2][1].Text {
-			msg := tgbotapi.NewMessage(update.Message.Chat.ID, nextType+"Humans")
-			msg.ReplyMarkup = MenuGoblinid
-			bot.Send(msg)
-		}
-
-		//Logic for Goblinid menu
-
-		if update.Message.Text == MenuGoblinid.Keyboard[0][0].Text {
-			msg := tgbotapi.NewMessage(update.Message.Chat.ID, "Yes it is just buttons")
-			msg.Text = "Name: " + Lists.ListOfMon[1].MonstersInfo[0].Name + "\n\n Character:  " + Lists.ListOfMon[1].MonstersInfo[0].Char + "\n\n Size:  " + Lists.ListOfMon[1].MonstersInfo[0].Skills + "\n\n Speed: " + Lists.ListOfMon[1].MonstersInfo[0].Speed + "\n\n\n" + Lists.ListOfMon[1].MonstersInfo[0].Desc
-			bot.Send(msg)
-		}
-		if update.Message.Text == MenuGoblinid.Keyboard[0][1].Text {
-			msg := tgbotapi.NewMessage(update.Message.Chat.ID, "Yes it is just buttons")
-			msg.Text = "Name: " + Lists.ListOfMon[1].MonstersInfo[1].Name + "\n\n Character:  " + Lists.ListOfMon[1].MonstersInfo[1].Char + "\n\n Size:  " + Lists.ListOfMon[1].MonstersInfo[1].Skills + "\n\n Speed: " + Lists.ListOfMon[1].MonstersInfo[1].Speed + "\n\n Hit Points: " + Lists.ListOfMon[1].MonstersInfo[1].HitPoints + "\n\n Armor class: " + Lists.ListOfMon[1].MonstersInfo[1].ArmorClass + "\n\n\n" + Lists.ListOfMon[1].MonstersInfo[1].Desc
-			bot.Send(msg)
-		}
-		if update.Message.Text == MenuGoblinid.Keyboard[0][2].Text {
-			msg := tgbotapi.NewMessage(update.Message.Chat.ID, "Yes it is just buttons")
-			msg.Text = "Name: " + Lists.ListOfMon[1].MonstersInfo[2].Name + "\n\n Character:  " + Lists.ListOfMon[1].MonstersInfo[2].Char + "\n\n Size:  " + Lists.ListOfMon[1].MonstersInfo[2].Skills + "\n\n Speed: " + Lists.ListOfMon[1].MonstersInfo[2].Speed + "\n\n Hit Points: " + Lists.ListOfMon[1].MonstersInfo[2].HitPoints + "\n\n Armor class: " + Lists.ListOfMon[1].MonstersInfo[2].ArmorClass + "\n\n\n" + Lists.ListOfMon[1].MonstersInfo[2].Desc
-			bot.Send(msg)
-		}
-		if update.Message.Text == MenuGoblinid.Keyboard[1][0].Text {
-			msg := tgbotapi.NewMessage(update.Message.Chat.ID, mainAnswer)
-			msg.ReplyMarkup = Menu1
-			bot.Send(msg)
-		}
-		if update.Message.Text == MenuGoblinid.Keyboard[1][1].Text {
-			msg := tgbotapi.NewMessage(update.Message.Chat.ID, nextType+"Govlinid")
-			msg.ReplyMarkup = MenuBeast
-			bot.Send(msg)
-		}
-		/* Todo: Have to finish menus that's left
-		 */
-		if update.Message.Text == MenuBeast.Keyboard[1][0].Text {
-			msg := tgbotapi.NewMessage(update.Message.Chat.ID, "welcome back")
-			msg.ReplyMarkup = Menu1
-			bot.Send(msg)
-		}
-		if update.Message.Text == MenuBeast.Keyboard[1][1].Text {
-			msg := tgbotapi.NewMessage(update.Message.Chat.ID, nextType+"Beasts")
-			msg.ReplyMarkup = MenuDragons
-			bot.Send(msg)
-		}
-
-		//Dragons
-		if update.Message.Text == MenuDragons.Keyboard[1][0].Text {
-			msg := tgbotapi.NewMessage(update.Message.Chat.ID, mainAnswer)
-			msg.ReplyMarkup = Menu1
-			bot.Send(msg)
-		}
-		//plant
-		//construct
-		if update.Message.Text == MenuPlants.Keyboard[0][0].Text {
-			msg := tgbotapi.NewMessage(update.Message.Chat.ID, "Yes it is just buttons")
+		if update.Message.Text != "" && update.Message.Text != "Main Menu" {
+			msg := tgbotapi.NewMessage(update.Message.Chat.ID, AnswerMenu(update.Message.Text))
+			//chech this place
+			log.Print("Message: " + update.Message.Text + "\n  Username: " + update.Message.Chat.UserName)
 			bot.Send(msg)
 		}
 
 	}
 
+}
+
+//Function is returning buttons for main menu
+func MainScan() (result []tgbotapi.KeyboardButton) {
+	v := ListsWriter()
+	for i := range v.ListOfMon {
+		result = append(result, tgbotapi.NewKeyboardButton(v.ListOfMon[i].ArType))
+	}
+	return
+}
+
+//Function returning buttons for the monster menu
+func MonsterScan(n int) (result [][]tgbotapi.KeyboardButton) {
+	v := ListsWriter()
+	var mainMenu []tgbotapi.KeyboardButton
+	mainMenu = append(mainMenu, tgbotapi.NewKeyboardButton("Main Menu"))
+	result = append(result, mainMenu)
+	for i := range v.ListOfMon[n].MonstersInfo {
+		var grownSlice []tgbotapi.KeyboardButton
+		grownSlice = append(grownSlice, tgbotapi.NewKeyboardButton(v.ListOfMon[n].MonstersInfo[i].Name))
+		result = append(result, grownSlice)
+	}
+	return
+}
+
+//function that returning data from JSON
+func ListsWriter() (Lists List) {
+	Lists = List{}
+	readJson, err := ioutil.ReadFile("monsters.json")
+	if err != nil {
+		log.Print(err, "Problem with reading file")
+	}
+	_ = json.Unmarshal(readJson, &Lists)
+	return Lists
+}
+
+//The function accepts a user request and looks for field in JSON to answer
+func AnswerMenu(m string) (result string) {
+	v := ListsWriter()
+	for i := range v.ListOfMon {
+		for r := range v.ListOfMon[i].MonstersInfo {
+			if m == v.ListOfMon[i].MonstersInfo[r].Name {
+				result = v.ListOfMon[i].MonstersInfo[r].Name + "\n" + v.ListOfMon[i].MonstersInfo[r].Desc + "\n\n Hitpoints: " + v.ListOfMon[i].MonstersInfo[r].HitPoints + "\n\n ArmorClass " + v.ListOfMon[i].MonstersInfo[r].ArmorClass + "\n\n Speed: " + v.ListOfMon[i].MonstersInfo[r].Speed + "\n\n Size: " + v.ListOfMon[i].MonstersInfo[r].Size + "\n\n Skills: " + v.ListOfMon[i].MonstersInfo[r].Skills + "\n\n Character: " + v.ListOfMon[i].MonstersInfo[r].Char
+
+			}
+		}
+	}
+	return
 }

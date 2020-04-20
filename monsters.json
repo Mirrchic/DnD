@@ -116,19 +116,270 @@
   },
   {
    "ArType": "Beasts",
-   "MonstersInfo": []
+   "MonstersInfo": [
+    {
+     "Name": "Cat",
+     "Char": "-",
+     "Size": "Tiny",
+     "Speed": "40 ft., climb 30 ft",
+     "Skills": "Perception +3, Stealth +4, Keen Smell. The cat has advantage on Wisdom (Perception) checks that rely on smell. ",
+     "HitPoints": "2 (1d4)",
+     "Rolls": "",
+     "ArmorClass": "12",
+     "Desc": "Just cat",
+     "Language": "",
+     "Sense": ""
+    },
+    {
+     "Name": "Rat",
+     "Char": "-",
+     "Size": "Tiny",
+     "Speed": "20 ft.",
+     "Skills": "Keen Smell. The rat has advantage on Wisdom (Perception) checks that rely on smell.",
+     "HitPoints": "1 (1d4-1)",
+     "Rolls": "",
+     "ArmorClass": "10",
+     "Desc": "Just Rat",
+     "Language": "",
+     "Sense": ""
+    },
+    {
+     "Name": "Wererat",
+     "Char": "-",
+     "Size": "Medium",
+     "Speed": "30 ft. or 20 ft. in rat form",
+     "Skills": "Perception +2, Stealth +4",
+     "HitPoints": "33 (6d8+6)",
+     "Rolls": "",
+     "ArmorClass": "12",
+     "Desc": "The wererat can use its action to Polymorph into a rat-humanoid hybrid or into a Giant Rat, or back into its true form, which is Humanoid. Its Statistics, other than its size, are the same in each form. Any Equipment it is wearing or carrying isn't transformed. It reverts to its true form if it dies.",
+     "Language": "",
+     "Sense": ""
+    },
+    {
+     "Name": "Wolf",
+     "Char": "-",
+     "Size": "Medium",
+     "Speed": "40 ft.",
+     "Skills": "Perception +3, Stealth +4",
+     "HitPoints": "11 (2d8+2)",
+     "Rolls": "",
+     "ArmorClass": "13",
+     "Desc": "Medium animal",
+     "Language": "",
+     "Sense": ""
+    },
+    {
+     "Name": "Black Bear",
+     "Char": "-",
+     "Size": "Medium",
+     "Speed": "40 ft., climb 30 ft.",
+     "Skills": "Perception +3, Keen Smell. The bear has advantage on Wisdom (Perception) checks that rely on smell.",
+     "HitPoints": "19 (3d8+6)",
+     "Rolls": "",
+     "ArmorClass": "11",
+     "Desc": "Big and strong black bear",
+     "Language": "",
+     "Sense": ""
+    },
+    {
+     "Name": "Dire Wolf",
+     "Char": "-",
+     "Size": "Large",
+     "Speed": "50 ft.",
+     "Skills": "Perception +3, Stealth +4, Keen Hearing and Smell. The wolf has advantage on Wisdom (Perception) checks that rely on hearing or smell. Pack Tactics. The wolf has advantage on an attack roll against a creature if at least one of the wolf’s allies is within 5 feet of the creature and the ally isn’t incapacitated.",
+     "HitPoints": "37 (5d10+10)",
+     "Rolls": "",
+     "ArmorClass": "14",
+     "Desc": "Dire wolves grew to about 9 feet (2.7 meters) long and weighed up to 800 pounds (363 kilograms), about the size of a horse. Their fur was thick and a mottled grey or black in color, and they had fiery eyes.",
+     "Language": "",
+     "Sense": ""
+    }
+   ]
   },
   {
    "ArType": "Dragons",
-   "MonstersInfo": []
+   "MonstersInfo": [
+    {
+     "Name": "Pseudodragon",
+     "Char": "Neutral Good",
+     "Size": "Tiny",
+     "Speed": "15 ft., fly 60ft.",
+     "Skills": "Perception +3, Stealth +4, Keen Senses. The pseudodragon has advantage on Wisdom (Perception) checks that rely on sight, hearing, or smell.\t\t\tMagic Resistance. The pseudodragon has advantage on saving throws against spells and other magical effects. Limited Telepathy. The pseudodragon can magically communicate simple ideas, emotions, and images telepathically with any creature within 100 feet of it that can understand a language.",
+     "HitPoints": "7 (2d7+2)",
+     "Rolls": "",
+     "ArmorClass": "13",
+     "Desc": "Their name, meaning false dragon, hints at what they are. Pseudodragons are tiny versions of their much larger cousins, normal dragons. Pseudodragons are around the size of an average house cat and are typically neutral good. Since they are miniature versions of all dragon types however, this can vary. (A blue pseudodragon may share the same traits as normal blue dragons. This rule is flexible and depends on the DM and players' personal preference.) With exceptional perception, stealth, and speed, pseudodragons are quite difficult to catch. They tend to avoid encounters and only fight defensively.",
+     "Language": "",
+     "Sense": ""
+    },
+    {
+     "Name": "Copper Dragon Wyrmling",
+     "Char": "Chaotic good",
+     "Size": "Medium",
+     "Speed": "30 ft., fly 60 ft.",
+     "Skills": "Dex +3, Con +3, Wis +2, Cha +3, blindsight 10 ft., darkvision 60 ft., passive Perception 14\t\t\t\t\t",
+     "HitPoints": "22(4d8+4)",
+     "Rolls": "",
+     "ArmorClass": "16",
+     "Desc": "A newly hatched dragon has a full array of abilities. Although inferior to those of a young dragon, these abilities are sufficient for the wyrmling to take care of itself, at least against relatively weak threats and predators. Although an emerging wyrmling is sodden and somewhat awkward, it can run within hours of hatching and can fly within a day or two. A wyrmling’s senses are fully acute, and—due to the interweaving of a dragon’s centers of memory and instinct—it is born with a substantial amount of its parents’ knowledge imprinted in its mind. ",
+     "Language": "",
+     "Sense": ""
+    },
+    {
+     "Name": "Brass Dragon Wyrmling",
+     "Char": "Chaotic Good",
+     "Size": "Medium",
+     "Speed": "30 ft., fly 60 ft.",
+     "Skills": "Perception +4, Stealth +2, Bite. Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 7 (1d10 + 2) piercing damage. Breath Weapons (Recharge 5–6). The dragon uses one of the following breath weapons.",
+     "HitPoints": "16 (3d8+3)",
+     "Rolls": "",
+     "ArmorClass": "16",
+     "Desc": "A newly hatched dragon has a full array of abilities. Although inferior to those of a young dragon, these abilities are sufficient for the wyrmling to take care of itself, at least against relatively weak threats and predators. Although an emerging wyrmling is sodden and somewhat awkward, it can run within hours of hatching and can fly within a day or two. A wyrmling’s senses are fully acute, and—due to the interweaving of a dragon’s centers of memory and instinct—it is born with a substantial amount of its parents’ knowledge imprinted in its mind. ",
+     "Language": "",
+     "Sense": ""
+    },
+    {
+     "Name": "Black Dragon",
+     "Char": "Chaotic Evil",
+     "Size": "Giant",
+     "Speed": "40 ft., fly 80 ft., swim 40 ft.",
+     "Skills": "Perception +16, Stealth +9",
+     "HitPoints": "367 (21d20 + 147)",
+     "Rolls": "",
+     "ArmorClass": "22",
+     "Desc": "Black dragons, also known as skull dragons, were far and away the most vile tempered and cruel of all chromatic dragons. They were solitary creatures that lived in the swamps and marshlands all around Toril, from the Flooded Forest in Sembia to the jungles of Chult.",
+     "Language": "",
+     "Sense": ""
+    },
+    {
+     "Name": "Green Dragon",
+     "Char": "Chaotic Evil",
+     "Size": "Giant",
+     "Speed": "40 ft., fly 80 ft., swim 40 ft.",
+     "Skills": "Dex +8, Con +14, Wis +10, Cha +11",
+     "HitPoints": "385(22d20 + 154)",
+     "Rolls": "",
+     "ArmorClass": "21",
+     "Desc": "Green dragons were most notable for the large, waving crest or fin that started at the dragon's nose and ran the entire length of the dragon's body. They also had exceptionally long, slender forked tongues",
+     "Language": "",
+     "Sense": ""
+    }
+   ]
   },
   {
-   "ArType": "Plant",
-   "MonstersInfo": []
+   "ArType": "Undead",
+   "MonstersInfo": [
+    {
+     "Name": "Skelleton",
+     "Char": "Lawfull Evil",
+     "Size": "Medium",
+     "Speed": "30 ft.",
+     "Skills": "Damage Vulnerabilities bludgeoning, Damage Immunities poison, Condition Immunities exhaustion, poisoned",
+     "HitPoints": "13 (2d8 + 4)",
+     "Rolls": "",
+     "ArmorClass": "13",
+     "Desc": "Skeletons were undead animated corpses similar to zombies, but completely devoid of flesh and did not feed on the living. They could be made from virtually any solid creature, and as such their size and power varied widely. In addition to the basic humanoid skeleton, there were also skeletons created from wolves, trolls, ettins and even giants.",
+     "Language": "",
+     "Sense": ""
+    },
+    {
+     "Name": "Zombie",
+     "Char": "Neutral Evil",
+     "Size": "Medium",
+     "Speed": "20 ft.",
+     "Skills": "Damage Immunities poison, Condition Immunities poisoned",
+     "HitPoints": "22(3d8+9)",
+     "Rolls": "",
+     "ArmorClass": "8",
+     "Desc": "A zombie was an undead creature usually created by the re-animation of a corpse. Unlike animated skeletons, zombies still retained some flesh on their bodies, and gave off a horrid, rank smell. They were almost mindless, but could be given simple commands, such as (kill anyone who opens the treasure chest). Virtually any solid creature could be turned into a zombie; in addition to humanoids, troglodytes, minotaurs, ogres, and even beholders could be turned into zombies.",
+     "Language": "",
+     "Sense": ""
+    },
+    {
+     "Name": "Shadow",
+     "Char": "Chaotic Evil",
+     "Size": "Medium",
+     "Speed": "40 ft.",
+     "Skills": "Stealth +4 (+6 in dim light or darkness)",
+     "HitPoints": "16(3d8+3)",
+     "Rolls": "",
+     "ArmorClass": "12",
+     "Desc": "Shadows were incorporeal and were hard to see in dark areas but were easy to see in brightly lit areas",
+     "Language": "",
+     "Sense": ""
+    },
+    {
+     "Name": "Banshee",
+     "Char": "Chaotic Evil",
+     "Size": "Medium",
+     "Speed": "0 ft., fly 40 ft.",
+     "Skills": "Damage Resistances acid, fire, lightning, thunder; bludgeoning, piercing, and slashing from nonmagical weapons",
+     "HitPoints": "58(13d8)",
+     "Rolls": "",
+     "ArmorClass": "12",
+     "Desc": "A Banshee was a female undead phantom, a selfish, strong-willed spirit that embodied the essence of hideousness.They delighted the death to any living creature",
+     "Language": "",
+     "Sense": ""
+    },
+    {
+     "Name": "Revenant",
+     "Char": "Neutral",
+     "Size": "Medium",
+     "Speed": "30 ft.",
+     "Skills": "Condition Immunities charmed, exhaustion, frightened, paralyzed, poisoned, stunned",
+     "HitPoints": "136(16d8+64)",
+     "Rolls": "",
+     "ArmorClass": "13",
+     "Desc": "Revenants were undead creatures that would rise from the dead to hunt down and slay their killers with an unwavering ",
+     "Language": "",
+     "Sense": ""
+    }
+   ]
   },
   {
    "ArType": "Construct",
-   "MonstersInfo": []
+   "MonstersInfo": [
+    {
+     "Name": "Homuncul",
+     "Char": "-",
+     "Size": "tiny",
+     "Speed": "20 ft.",
+     "Skills": "-",
+     "HitPoints": "5(2d4+)",
+     "Rolls": "",
+     "ArmorClass": "13",
+     "Desc": "A homunculus was a tiny construct created by spellcasters to act as a spy and servant. Homunculi were created through mysticism and alchemy, using the spellcaster's own blood in the procedure. This blood-link provided a special bond between the homunculus and its creator. The construct was completely loyal to its master and could telepathically transmit anything it saw or heard back to its creator. Although they possessed a telepathic link to their creator, homunculi could not verbally speak",
+     "Language": "",
+     "Sense": ""
+    },
+    {
+     "Name": "Rug of Smothering",
+     "Char": "-",
+     "Size": "Large",
+     "Speed": "10 ft.",
+     "Skills": "-",
+     "HitPoints": "33(6d10)",
+     "Rolls": "",
+     "ArmorClass": "12",
+     "Desc": "Rugs of smothering were magically animated rugs that were commonly employed as traps. They attacked by trapping and constraining their victim",
+     "Language": "",
+     "Sense": ""
+    },
+    {
+     "Name": "Flesh Golem",
+     "Char": "neutral",
+     "Size": "medium",
+     "Speed": "30 ft.",
+     "Skills": "-",
+     "HitPoints": "93(11d8+44)",
+     "Rolls": "",
+     "ArmorClass": "9",
+     "Desc": "A flesh golem was a ghoulish collection of body parts, stitched together into a single composite form",
+     "Language": "",
+     "Sense": ""
+    }
+   ]
   }
  ]
 }
