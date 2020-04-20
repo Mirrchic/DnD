@@ -37,7 +37,7 @@ type List struct {
 func main() {
 	//Init of bot
 	var err error
-	bot, err := tgbotapi.NewBotAPI("1070281604:AAGBJn6VtB8dSqo_--9HKZHWBon2ra0kzFc")
+	bot, err := tgbotapi.NewBotAPI("bot token")
 	if err != nil {
 		log.Panic("bot init error:", err)
 		return
